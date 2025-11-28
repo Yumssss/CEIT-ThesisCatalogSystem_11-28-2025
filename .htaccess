@@ -1,0 +1,6 @@
+# Use home.php as the default index file
+DirectoryIndex home.php
+
+# Optional: Disable directory listing (so people can't see your file list)
+Options -Indexes
+

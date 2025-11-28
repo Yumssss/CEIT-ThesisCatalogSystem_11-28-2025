@@ -1,0 +1,1986 @@
+/* ===============================
+   RESET + BASE STYLES
+   =============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-blue: #0a3d91;
+    --hover-blue: #134dbb;
+    --accent-blue: #b3e5fc;
+    --bg-light: #f4f6f9;
+    --text-dark: #1a1a1a;
+    --text-light: #f5f5f5;
+    --white: #ffffff;
+}
+
+body {
+    background: linear-gradient(135deg, #eaf2ff, #d9e8ff);
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* Centers login form */
+.login-main {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+}
+
+/* ===============================
+   LOGIN CONTAINER
+   =============================== */
+.login-container {
+    background: #ffffff;
+    width: 420px;
+    padding: 45px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.5s ease;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-box img.logo {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+}
+
+.login-box h2 {
+    color: #0a3d91;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* ===============================
+   FORM INPUTS
+   =============================== */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 45px 12px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    transition: 0.25s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.15);
+}
+
+/* ===============================
+   PASSWORD FIELD
+   =============================== */
+.password-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-group input {
+    width: 100%;
+    padding: 12px 45px 12px 14px;
+    /* Space for eye icon */
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #fff;
+    transition: all 0.25s ease;
+}
+
+.password-group input:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.15);
+}
+
+/* 👁️ Eye Icon Container */
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* 👁️ Eye Icon */
+.toggle-password img {
+    width: 22px;
+    height: 22px;
+    user-select: none;
+    pointer-events: none;
+    /* makes click easier */
+}
+
+/* ===============================
+   SELECT DROPDOWN (ROLE)
+   =============================== */
+/* ===============================
+   🔽 MODERN DROPDOWN STYLE
+   =============================== */
+.select-group {
+    position: relative;
+    width: 100%;
+}
+
+/* Custom dropdown field */
+.select-group select {
+    width: 100%;
+    padding: 12px 45px 12px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #0a3d91;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none; /* remove default arrow */
+    transition: all 0.25s ease;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg fill='rgb(10,61,145)' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 9l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    box-shadow: 0 2px 6px rgba(10, 61, 145, 0.05);
+}
+
+/* Hover / Focus interactions */
+.select-group select:hover {
+    border-color: #0a3d91;
+    box-shadow: 0 0 6px rgba(10, 61, 145, 0.2);
+}
+
+.select-group select:focus {
+    outline: none;
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.2);
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg fill='rgb(23,101,209)' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 9l5 5 5-5'/></svg>");
+}
+
+/* Dropdown text options */
+.select-group select option {
+    background-color: #fff;
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Add subtle press effect */
+.select-group select:active {
+    transform: scale(0.99);
+}
+
+/* ===============================
+   BUTTON
+   =============================== */
+.login-btn {
+    margin-top: 8px;
+    background: linear-gradient(90deg, #0a3d91, #1765d1);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(90deg, #1765d1, #0a3d91);
+    transform: translateY(-2px);
+}
+
+/* ===============================
+   LINKS
+   =============================== */
+.forgot-link {
+    text-align: center;
+    margin-top: 10px;
+    color: #0a3d91;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+    color: #134dbb;
+}
+
+.login-box p {
+    color: #333;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-box p a {
+    color: #0a3d91;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-box p a:hover {
+    color: #134dbb;
+}
+
+/* ===============================
+   ERROR MESSAGES
+   =============================== */
+p[style*="color:red"] {
+    background: #ffeaea;
+    border: 1px solid #ffb3b3;
+    color: #d32f2f !important;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 35px 25px;
+    }
+}
+
+/* REGISTER ACCOUNT MODULE =========================================================================================================*/
+.register-container {
+    margin: 50px auto;
+    background: #fff;
+    width: 420px;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.register-container img {
+    display: block;
+    margin: 0 auto 12px;
+    width: 80px;
+    height: 80px;
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #0a3d91;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+
+/* ===== FORM ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.name-group {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1.4px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.15);
+}
+
+.password-rules {
+    font-size: 0.83rem;
+    color: #555;
+    background: #f7f9fc;
+    border-radius: 8px;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+/* ===== BUTTON ===== */
+.login-btn {
+    margin-top: 8px;
+    background-color: #0a3d91;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.1s ease;
+}
+
+.login-btn:hover {
+    background-color: #134dbb;
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== FOOTER ===== */
+.footer-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.footer-link a {
+    color: #0a3d91;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
+}
+
+/* ===== MESSAGE ===== */
+.message {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #c62828;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================================================
+   🧭 MODERN SIDEBAR
+   ======================================================= */
+
+/* ===== SIDEBAR BASE ===== */
+
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #0a3d91, #153fa3);
+    color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 100px; /* space for header */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.35s ease-in-out;
+    z-index: 100;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar.closed {
+    transform: translateX(-260px); /* slide left */
+}
+
+/* Sidebar Navigation */
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 15px;
+}
+
+/* Sidebar Links */
+.sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+    opacity: 0.9;
+}
+
+.sidebar nav a img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* 🧩 Makes black PNGs turn white */
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover and Active States */
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+.sidebar nav a:hover img,
+.sidebar nav a.active img {
+    filter: brightness(0) invert(1)
+        drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+    transform: scale(1.1);
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.sidebar .logout {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    width: calc(100% - 40px);
+    margin: 20px auto 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+}
+
+.sidebar .logout:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(220, 38, 38, 0.4);
+}
+
+/* ===== SIDEBAR HIDDEN STATE ===== */
+.sidebar.hidden {
+    left: -260px;
+    opacity: 0;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    display: flex;
+    transition: margin-left 0.35s ease;
+    margin-left: 240px; /* space for sidebar */
+}
+
+.container.full {
+    margin-left: 0;
+}
+
+/* ===== BURGER ICON ===== */
+.menu-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-right: 15px;
+    user-select: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--white);
+}
+
+.menu-icon:hover {
+    color: #e0e7ff;
+}
+
+.menu-icon.active {
+    transform: rotate(90deg);
+}
+
+/* =======================================================
+   🧭 ADMIN DASHBOARD PAGE
+   ======================================================= */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 🍏 Glass effect */
+    background: rgba(10, 61, 145, 0.55); /* your blue but transparent */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+    /* Shadow + floating look */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    /* Sticky behavior */
+    position: sticky;
+    top: 0;
+    z-index: 200;
+
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.menu-icon {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.header-logo {
+    background: #ffffff;
+    color: #0a3d91;
+    font-weight: 700;
+    font-size: 14px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.header-logo img {
+    display: block;
+    object-fit: contain;
+}
+
+/* === MAIN LAYOUT === */
+.container {
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: 100vh;
+    background: var(--bg-light);
+}
+
+main {
+    flex: 1;
+    padding: 40px 50px;
+    animation: fadeUp 0.8s ease;
+}
+
+/* === WELCOME SECTION === */
+.welcome-section {
+    margin-bottom: 30px;
+    text-align: left;
+}
+.welcome-section h2 {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.welcome-section .date {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+.divider {
+    border: none;
+    border-top: 2px solid #e0e7ff;
+    margin-top: 10px;
+}
+
+/* === DASHBOARD COUNTERS === */
+.dashboard-counters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.counter-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 25px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    /* cursor: pointer; */
+}
+.counter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(10, 61, 145, 0.25);
+}
+
+.icon-box img {
+    margin-left: 15px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: brightness(0) invert(0) !important; /* restores original color (black) */
+}
+
+.counter-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.counter-title {
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.counter-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* === RECENT REQUESTS TABLE === */
+/* === RECENT REQUESTS TABLE WRAPPER === */
+.recent-requests {
+    margin-top: 20px;
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    animation: fadeUp 0.8s ease;
+}
+
+.recent-requests table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.recent-requests table tr {
+    height: 75px;
+}
+
+/* === HEADER === */
+.recent-requests th {
+    background: #f4f6ff;
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 14px 18px;
+    border-bottom: 1px solid #e0e7ff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* === DATA CELLS === */
+.recent-requests td {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.3s ease;
+    color: #1a1a1a;
+}
+
+/* Hover row effect */
+.recent-requests tr:hover td {
+    background: #f9fbff;
+}
+
+/* === CENTERED COLUMNS === */
+.recent-requests td:nth-child(1),
+.recent-requests td:nth-child(4),
+.recent-requests td:nth-child(5),
+.recent-requests th:nth-child(1),
+.recent-requests th:nth-child(4),
+.recent-requests th:nth-child(5) {
+    text-align: center;
+}
+
+/* ===================================================================
+   TRUNCATE LONG TITLES (Option A: Ellipsis + Tooltip)
+=================================================================== */
+.recent-requests .thesis-title-cell {
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+/* ===================================================================
+   STATUS BADGES (Soft Background, Modern UI)
+=================================================================== */
+/* === STATUS BADGES (Pill Style) === */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+    min-width: 90px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Colors */
+.status-pending {
+    color: #b76e00;
+    background: rgba(243, 156, 18, 0.15);
+}
+
+.status-forclaiming {
+    color: #1765d1;
+    background: rgba(23, 101, 209, 0.15);
+}
+
+.status-claimed {
+    color: #2e7d32;
+    background: rgba(46, 125, 50, 0.15);
+}
+
+.status-returned {
+    color: #2980b9;
+    background: rgba(41, 128, 185, 0.15);
+}
+
+.status-rejected {
+    color: #c0392b;
+    background: rgba(192, 57, 43, 0.15);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delete-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.delete-btn.enabled {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* =======================================================
+   📘 BORROWING REQUESTS PAGE
+   ======================================================= */
+
+.request-header {
+    margin: 0px 0 10px 0;
+    text-align: left;
+}
+
+.request-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #0a3d91;
+    letter-spacing: 0.5px;
+}
+
+/* ====== CONTROLS (Search + Filter + Pagination) ====== */
+.request-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #f8faff;
+    padding: 12px 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.controls-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    width: 280px;
+    border: 1px solid #cdd6f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.search-box input:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.15);
+}
+
+.filter-box {
+    width: 7.5rem;
+}
+
+.filter-box select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cdd6f0;
+    background: white
+        url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%230a3d91" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>')
+        no-repeat right 12px center/16px;
+    appearance: none;
+    font-size: 0.95rem;
+    color: #333;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.filter-box select:hover {
+    border-color: #0a3d91;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #444;
+}
+
+.pagination button {
+    border: none;
+    background: #e5edff;
+    color: #0a3d91;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #0a3d91;
+    color: white;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ====== TABLE SECTION ====== */
+.request-table {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.request-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.request-table th {
+    background: #0a3d91;
+    color: white;
+    font-weight: 600;
+    padding: 12px 10px;
+}
+
+.request-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f2f8;
+}
+
+.request-table tr:hover td {
+    background: #f9fbff;
+}
+
+.view-btn {
+    padding: 7px 12px;
+    background: #0a3d91;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.view-btn:hover {
+    background: #153fa3;
+}
+
+/* Center certain columns */
+.request-table td:nth-child(1),  /* Request # */
+.request-table td:nth-child(4),  /* Department */
+.request-table td:nth-child(5),  /* Date */
+.request-table td:nth-child(6) {
+    /* Status */
+    text-align: center;
+}
+
+.request-table th:nth-child(1),
+.request-table th:nth-child(4),
+.request-table th:nth-child(5),
+.request-table th:nth-child(6) {
+    text-align: center;
+}
+
+/* Clickable row styling */
+.click-row:hover td {
+    background: #eef4ff !important;
+}
+
+.click-row {
+    transition: 0.2s ease;
+}
+
+.click-row td {
+    vertical-align: middle;
+}
+
+/* Limit thesis title to 2 lines */
+.thesis-title-cell {
+    max-width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+/* =======================================================
+   🪟 MODERN GLASS MODAL DESIGN
+   ======================================================= */
+
+.modal-1 {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 200;
+}
+
+/* ===== MODAL CONTENT ===== */
+.modal-content-1 {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(18px);
+    border-radius: 14px;
+    padding: 25px 28px;
+    width: 100%;
+    max-width: 520px; /* expands only up to this */
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    position: relative;
+    color: #222;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.modal-close-1 {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #444;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-title {
+    margin-top: 22px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #0a3d91;
+    letter-spacing: 0.5px;
+}
+
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(10, 61, 145, 0.25);
+    margin: 6px 0 14px;
+}
+
+/* ===== GRID ALIGNMENT ===== */
+.info-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    row-gap: 10px;
+}
+
+.label {
+    font-weight: 600;
+    color: #0a3d91;
+}
+
+.value {
+    word-break: break-word;
+}
+
+/* ===== BLOCK / MULTI-LINE FIELDS ===== */
+.multi-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.multi-block .label {
+    margin-bottom: 4px;
+}
+
+.multi-block .value {
+    margin-left: 15px;
+    line-height: 1.35;
+}
+
+/* ===== RESPONSIVE (small screens) ===== */
+@media (max-width: 450px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .label {
+        margin-bottom: -4px;
+    }
+}
+
+/* ====== DETAILS INSIDE MODAL ====== */
+.detail-item {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.detail-item strong {
+    color: #0a3d91;
+    font-weight: 600;
+}
+
+/* Divider */
+.modal-content-1 hr {
+    border: none;
+    height: 1px;
+    background: rgba(10, 61, 145, 0.15);
+    margin: 14px 0;
+}
+
+/* ====== ACTION BUTTONS ====== */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.status-btn {
+    flex: 1;
+    min-width: 130px;
+    text-align: center;
+    border: none;
+    color: white;
+    padding: 10px 0;
+    border-radius: 8px;
+
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.status-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Button colors */
+.status-btn.approve {
+    background: #22c55e;
+    box-shadow: 0 3px 10px rgba(34, 197, 94, 0.4);
+}
+
+.status-btn.reject {
+    background: #ef4444;
+    box-shadow: 0 3px 10px rgba(239, 68, 68, 0.4);
+}
+
+.status-btn.return {
+    background: #2563eb;
+    box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+}
+
+.status-btn.complete {
+    background: #0a3d91;
+    box-shadow: 0 3px 10px rgba(10, 61, 145, 0.4);
+}
+
+.status-btn.claim {
+    background: #0ea5e9; /* cyan */
+    box-shadow: 0 3px 10px rgba(14, 165, 233, 0.4);
+}
+
+.status-btn:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+/* ====== STATUS TABS ====== */
+.status-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    border-bottom: 2px solid #d0d0d0;
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #555;
+
+    border-bottom: 3px solid transparent;
+    transition: 0.2s;
+}
+
+.tab-btn:hover {
+    color: #0a3d91;
+}
+
+.tab-btn.active {
+    color: #0a3d91;
+    font-weight: 600;
+    border-bottom: 3px solid #1765d1;
+}
+
+.status-tabs .count {
+    background: #1765d1;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.value#m-request {
+    font-weight: 700;
+    color: #000000;
+}
+/* =======================================================
+   📚 MANAGE THESIS PAGE
+   ======================================================= */
+
+.thesis-overview {
+    background: #fff;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.add-thesis-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.add-btn-header {
+    background: #0a3d91;
+    color: #fff;
+    border: none;
+    padding: 20px 30px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.add-btn-header:hover {
+    background: #153fa3;
+    transform: translateY(-1px);
+}
+
+/* Control Bar */
+.table-controls-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 14px 20px;
+    background: #f8faff;
+    border: 1px solid #e0e6f5;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.controls-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* =======================================================
+   🎚 FILTER DROPDOWN — Modern Minimalist Style
+   ======================================================= */
+/* =======================================================
+   🎛 FILTER BUTTON
+   ======================================================= */
+
+.filter-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.thesis-filter-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e3e8f5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+    min-width: 230px;
+}
+
+.thesis-filter-menu.visible {
+    display: flex;
+}
+
+#filterToggleBtn {
+    background: #eaf1ff;
+    color: #0a3d91;
+    border: 1px solid #cdd9f8;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#filterToggleBtn:hover {
+    background: #dce7ff;
+    border-color: #b9c9f5;
+    transform: translateY(-1px);
+}
+
+#filterToggleBtn:active {
+    transform: scale(0.98);
+}
+
+#filterToggleBtn::after {
+    content: "▼";
+    font-size: 0.65rem;
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+}
+
+#filterToggleBtn.active::after {
+    transform: rotate(-180deg);
+}
+
+.thesis-filter-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #e3e8f5;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+    min-width: 230px;
+}
+
+.thesis-filter-menu.visible {
+    display: flex;
+}
+
+/* Group separation */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: #0a3d91;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* Divider line between sections */
+.thesis-filter-menu hr {
+    border: none;
+    height: 1px;
+    background: #edf1fa;
+    margin: 8px 0;
+}
+
+/* Checkbox rows */
+.thesis-filter-menu label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #333;
+    padding: 6px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.thesis-filter-menu label:hover {
+    background: #f5f8ff;
+    color: #0a3d91;
+}
+
+/* Checkboxes */
+.thesis-filter-menu input[type="checkbox"] {
+    accent-color: #0a3d91;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Subtle appear animation */
+@keyframes fadeInFilter {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search */
+#searchInput {
+    padding: 10px 14px;
+    width: 260px;
+    border: 1px solid #ccd6eb;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: #fff;
+    transition: all 0.2s ease;
+}
+
+#searchInput:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.1);
+    outline: none;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #0a3d91;
+}
+
+.pagination button {
+    background: #fff;
+    border: 1px solid #ccd6eb;
+    border-radius: 6px;
+    padding: 6px 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination button:hover {
+    background: #e9f0ff;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e3e8f5;
+}
+
+th,
+td {
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 0.93rem;
+    border-bottom: 1px solid #f1f3f8;
+}
+
+th {
+    background: #0a3d91;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+tr:hover td {
+    background: #f9fbff;
+}
+
+/* Buttons inside table */
+.action-btn {
+    border: none;
+    padding: 7px 13px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.edit-btn {
+    background: #0a3d91;
+}
+
+.edit-btn:hover {
+    background: #153fa3;
+    transform: translateY(-1px);
+}
+.availability-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 90px;
+    color: white;
+}
+
+/* Slight transparency look */
+.avail-available {
+    background: rgba(40, 167, 69, 0.75); /* green */
+}
+
+.avail-unavailable {
+    background: rgba(220, 53, 69, 0.75); /* red */
+}
+
+/* 🍏 iOS Toast Container — Bottom Left */
+.toast-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
+
+/* 🍏 Toast Style (Glass Effect) */
+.toast {
+    min-width: 240px;
+    max-width: 320px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #fff;
+    text-align: left;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(30, 30, 30, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    animation: iosBottomSlide 0.45s cubic-bezier(0.25, 0.9, 0.4, 1.4);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* 🔹 Variants */
+.toast.success {
+    background: rgba(10, 61, 145, 0.5);
+}
+.toast.error {
+    background: rgba(220, 20, 20, 0.55);
+}
+.toast.info {
+    background: rgba(23, 101, 209, 0.5);
+}
+
+/* 🍏 Slide Up + Bounce Animation */
+@keyframes iosBottomSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.03);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =======================================================
+   🧾 ADD THESIS PAGE
+   ======================================================= */
+.add-thesis-page {
+    background: #fff;
+    padding: 30px 35px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.add-header {
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #0a3d91;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #153fa3;
+}
+
+.add-thesis-form .form-group {
+    margin-bottom: 16px;
+}
+
+.add-thesis-form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.add-thesis-form input,
+.add-thesis-form select,
+.add-thesis-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd6eb;
+    border-radius: 8px;
+    font-size: 0.93rem;
+    background: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.add-thesis-form input:focus,
+.add-thesis-form select:focus,
+.add-thesis-form textarea:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.12);
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.add-btn {
+    background: #0a3d91;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #153fa3;
+    transform: translateY(-1px);
+}
+
+/* =======================================================
+   ✨ ANIMATIONS & TRANSITIONS
+   ======================================================= */
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.25s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+/* =======================================================
+   📱 Responsive
+   ======================================================= */
+@media (max-width: 768px) {
+    .table-controls-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .controls-left,
+    .controls-right {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .thesis-overview,
+    .add-thesis-page {
+        padding: 20px;
+    }
+}
+
+/* --- Layout fix for Add Thesis toggle --- */
+main {
+    position: relative;
+    min-height: 70vh;
+}
+
+.thesis-overview,
+.add-thesis-page {
+    width: 100%;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Force hidden sections to not occupy layout space */
+.hidden {
+    display: none !important;
+}
+
+/* =======================================================
+   🪟 EDIT THESIS MODAL — Modern Minimalist Redesign
+   ======================================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px 32px;
+    width: 480px;
+    max-width: 90%;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    color: #1f2937;
+    position: relative;
+    animation: slideUpModal 0.3s ease;
+}
+
+@keyframes slideUpModal {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal close button */
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-modal:hover {
+    color: #0a3d91;
+    transform: rotate(90deg);
+}
+
+/* Form layout inside modal */
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.modal-content label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd6eb;
+    border-radius: 8px;
+    font-size: 0.93rem;
+    background: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+    border-color: #0a3d91;
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.12);
+    outline: none;
+}
+
+/* Footer buttons */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.last-updated {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.save-btn,
+.delete-btn {
+    border: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.save-btn {
+    background: #22c55e;
+}
+
+.save-btn:hover {
+    background: #16a34a;
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    background: #ef4444;
+}
+
+.delete-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+/* Make modal responsive */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+        padding: 24px 20px;
+    }
+}

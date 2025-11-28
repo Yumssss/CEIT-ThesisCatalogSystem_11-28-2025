@@ -1,0 +1,1819 @@
+/* ======================================
+   RESET & BASE
+   ====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary: #0a3d91;
+    --secondary: #1765d1;
+    --accent: #b3e5fc;
+    --light-bg: #f9fbff;
+    --text-dark: #1a1a1a;
+    --text-light: #f1f1f1;
+    --transition: 0.3s ease;
+}
+
+body {
+    background: var(--light-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* ======================================
+   NAVBAR
+   ====================================== */
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    transition: background var(--transition), box-shadow var(--transition);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.title {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    position: relative;
+    transition: color var(--transition);
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* ======================================
+   HERO SECTION
+   ====================================== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero .college-logos,
+.hero h1,
+.hero h2,
+.hero p {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero .college-logos {
+    animation-delay: 0.1s;
+}
+.hero h1 {
+    animation-delay: 0.2s;
+}
+.hero h2 {
+    animation-delay: 0.4s;
+}
+.hero p {
+    animation-delay: 0.6s;
+}
+
+.hero .college-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.college-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+.hero h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero h2 {
+    font-size: 1.2rem;
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+.hero p {
+    margin-top: 15px;
+    font-size: 1rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* ======================================
+   CONTENT SECTION
+   ====================================== */
+.content {
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.welcome {
+    text-align: center;
+    max-width: 700px;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.welcome h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.welcome p {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Announcements */
+.announcements {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.announcements h3 {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.announcement-box ul {
+    list-style: none;
+}
+
+.announcement-box li {
+    background: var(--light-bg);
+    border-left: 4px solid var(--primary);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.announcement-box li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(10, 61, 145, 0.2);
+}
+
+/* ======================================
+   FOOTER
+   ====================================== */
+footer {
+    background: var(--primary);
+    color: var(--text-light);
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    animation: fadeIn 1s ease;
+}
+
+.footer-logo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+footer h3 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.footer-info {
+    max-width: 100%;
+    margin: 0 auto 20px;
+}
+
+.footer-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-info-logo {
+    width: 18px;
+    height: 18px;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ======================================
+   DARK MODE
+   ====================================== */
+body.dark-mode {
+    background: #0e1726;
+    color: var(--text-light);
+}
+
+body.dark-mode nav {
+    background: rgba(14, 23, 38, 0.95);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .title {
+    color: #64b5f6;
+}
+
+body.dark-mode .nav-links a {
+    color: #f1f1f1;
+}
+
+body.dark-mode .nav-links a.active::after {
+    background: #64b5f6;
+}
+
+body.dark-mode .announcements {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .announcement-box li {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ddd;
+}
+
+/* ======================================
+   TOGGLE BUTTON
+   ====================================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1100;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+    background: var(--secondary);
+}
+
+/* ======================================
+   ANIMATIONS
+   ====================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 12px 20px;
+        gap: 10px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero h2 {
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 40px 25px;
+    }
+
+    .announcements {
+        padding: 25px;
+    }
+
+    .college-logo {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* =============================================================================================================================
+   CATALOG HEADER
+   ============================================================================================================================= */
+.catalog-main {
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.8s ease;
+}
+
+.catalog-intro {
+    text-align: center;
+    width: 90%;
+    max-width: 100%;
+}
+
+.catalog-title {
+    color: var(--primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.catalog-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* ======================================
+   SEARCH BOX + FILTER
+   ====================================== */
+.catalog-search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+    margin: auto;
+    max-width: 800px;
+    margin-bottom: 25px;
+}
+
+.catalog-search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+    background-color: #fff;
+}
+
+.catalog-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.15);
+}
+
+.catalog-search-btn {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    letter-spacing: 0.3px;
+}
+
+.catalog-search-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    box-shadow: 0 4px 10px rgba(21, 86, 193, 0.3);
+}
+
+.catalog-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.catalog-filter label {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.catalog-filter select {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    background-color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,<svg fill='rgb(31,111,235)' height='20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 9l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+}
+
+.catalog-filter select:hover,
+.catalog-filter select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.15);
+}
+
+/* ======================================
+   TABLE REFINEMENT
+   ====================================== */
+.table-wrapper {
+    overflow-x: auto;
+    width: 90%;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(10, 61, 145, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(10, 61, 145, 0.12);
+}
+
+.catalog-table {
+    width: 100%;
+    table-layout: fixed; /* <<< THIS FIXES THE WIDTH SHRINKING */
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.catalog-table thead {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: #fff;
+}
+
+.catalog-table th {
+    padding: 16px 20px;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.catalog-table td {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #edf2f7;
+    color: var(--text-dark);
+    background: #fff;
+    transition: background 0.3s ease;
+}
+
+.catalog-table tbody tr:nth-child(even) td {
+    background: var(--light-bg);
+}
+
+.catalog-table tbody tr:hover td {
+    background: rgba(23, 101, 209, 0.05);
+}
+
+.no-results td {
+    text-align: center;
+}
+
+/* ======================================
+   ACTION BUTTON (View Details)
+   ====================================== */
+.view-btn {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all var(--transition);
+    display: inline-block;
+    box-shadow: 0 3px 10px rgba(23, 101, 209, 0.15);
+}
+
+.view-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    box-shadow: 0 4px 12px rgba(10, 61, 145, 0.25);
+}
+
+/* ======================================
+   STATUS BADGES
+   ====================================== */
+.status-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+    transition: all var(--transition);
+}
+
+/* Example status colors */
+.status-available {
+    background: rgba(46, 125, 50, 0.12);
+    color: #2e7d32;
+}
+
+.status-pending {
+    background: rgba(255, 193, 7, 0.15);
+    color: #b98b00;
+}
+
+.status-unavailable {
+    background: rgba(198, 40, 40, 0.12);
+    color: #c62828;
+}
+
+/* ======================================
+   SMOOTH TABLE ROW ENTRANCE
+   ====================================== */
+@keyframes fadeRowIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.catalog-table tbody tr {
+    animation: fadeRowIn 0.5s ease;
+}
+
+/* ======================================
+   RESPONSIVE TABLE IMPROVEMENTS
+   ====================================== */
+@media (max-width: 768px) {
+    .catalog-table th,
+    .catalog-table td {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .view-btn {
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+
+    .status-badge {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ======================================
+   PAGINATION
+   ====================================== */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 35px 0;
+}
+
+.pagination-container button {
+    background: var(--primary);
+    border: none;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    font-size: 0.95rem;
+}
+
+.pagination-container button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(31, 111, 235, 0.3);
+}
+
+.pagination-container button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ======================================
+   DARK MODE
+   ====================================== */
+body.dark-mode {
+    background: var(--dark-bg);
+    color: var(--text-light);
+}
+
+body.dark-mode .catalog-table {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .catalog-table thead {
+    background: linear-gradient(90deg, #1565c0, #2196f3);
+}
+
+body.dark-mode .catalog-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .catalog-table tr:hover td {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .catalog-search-input,
+body.dark-mode .catalog-filter select {
+    background: #1b2838;
+    color: #f1f1f1;
+    border: 1.5px solid #444;
+}
+
+body.dark-mode .catalog-search-btn {
+    background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+body.dark-mode .pagination-container button {
+    background: #1565c0;
+}
+
+/* ======================================
+   THEME TOGGLE BUTTON
+   ====================================== */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1100;
+    box-shadow: 0 4px 10px rgba(31, 111, 235, 0.3);
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+    background: var(--secondary);
+}
+
+/* ======================================
+   ANIMATIONS
+   ====================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======================================
+   RESPONSIVE DESIGN
+   ====================================== */
+
+/* Mobile */
+@media (max-width: 768px) {
+    .catalog-main {
+        padding-top: 100px;
+    }
+
+    .catalog-intro {
+        padding: 0 1rem;
+    }
+
+    .catalog-title {
+        font-size: 1.7rem;
+    }
+
+    .catalog-search-box {
+        flex-direction: column;
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .catalog-search-input,
+    .catalog-search-btn {
+        width: 100%;
+    }
+
+    .catalog-filter {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .table-wrapper {
+        width: 95%;
+    }
+
+    .catalog-table th,
+    .catalog-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .pagination-container {
+        gap: 10px;
+    }
+}
+
+/* ======================================
+   VIEW DETAILS BUTTON
+   ====================================== */
+.catalog-view-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
+    transition: all var(--transition);
+    box-shadow: 0 3px 10px rgba(23, 101, 209, 0.15);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.catalog-view-btn:hover {
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(10, 61, 145, 0.25);
+}
+
+.catalog-view-btn:active {
+    transform: scale(0.98);
+}
+
+.catalog-view-btn:hover::after {
+    opacity: 1;
+    bottom: 130%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .catalog-view-btn {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+        border-radius: 40px;
+    }
+}
+
+/* Laptop */
+@media (min-width: 769px) and (max-width: 1366px) {
+    .catalog-title {
+        font-size: 2rem;
+    }
+
+    .catalog-search-box {
+        width: 80%;
+    }
+
+    .table-wrapper {
+        width: 88%;
+    }
+
+    .catalog-table th,
+    .catalog-table td {
+        padding: 12px 18px;
+    }
+}
+
+/* =======================================================
+   📘 THESIS DETAILS PAGE
+   ======================================================= */
+/* ==========================================================
+   CEIT THESIS HUB — THESIS DETAILS PAGE (Modern Pro Style)
+   Cleaned + Optimized + UI-Kit Standard
+========================================================== */
+
+/* -----------------------------------------------
+   MAIN CONTAINER
+-------------------------------------------------- */
+.thesis-details-container {
+    max-width: 950px;
+    margin: 110px auto 80px;
+    padding: 50px 60px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+    animation: fadeUp 0.8s ease;
+}
+
+/* -----------------------------------------------
+   BACK LINK
+-------------------------------------------------- */
+.back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--secondary);
+    transform: translateX(-4px);
+}
+
+/* -----------------------------------------------
+   TITLE
+-------------------------------------------------- */
+.details-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+}
+
+/* -----------------------------------------------
+   META SECTION — Professional Card Layout
+-------------------------------------------------- */
+.thesis-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 50px;
+}
+
+.meta-box {
+    background: #fff;
+    border: 1.5px solid rgba(10, 61, 145, 0.12);
+    border-radius: 14px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 14px rgba(10, 61, 145, 0.08);
+    transition: var(--transition);
+}
+
+.meta-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--secondary);
+    box-shadow: 0 6px 20px rgba(10, 61, 145, 0.15);
+}
+
+.meta-box strong {
+    display: block;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.4px;
+    font-size: 0.94rem;
+}
+
+.meta-box p {
+    font-size: 1.02rem;
+    color: var(--text-dark);
+    line-height: 1.55;
+}
+
+/* -----------------------------------------------
+   AVAILABILITY BOX — Modern Gradient Chips
+-------------------------------------------------- */
+.availability-box {
+    padding: 26px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.availability-box.available {
+    background: linear-gradient(
+        135deg,
+        rgba(46, 125, 50, 0.18),
+        rgba(56, 142, 60, 0.28)
+    );
+    border-color: #2e7d32;
+    color: #1b5e20;
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.25);
+}
+
+.availability-box.unavailable {
+    background: linear-gradient(
+        135deg,
+        rgba(198, 40, 40, 0.18),
+        rgba(211, 47, 47, 0.28)
+    );
+    border-color: #c62828;
+    color: #7f0000;
+    box-shadow: 0 8px 20px rgba(198, 40, 40, 0.25);
+}
+
+.availability-box:hover {
+    transform: translateY(-3px);
+}
+
+/* Availability icon spacing */
+.availability-box i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+/* -----------------------------------------------
+   BUTTON GROUP
+-------------------------------------------------- */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.borrow-btn,
+.back-btn {
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Borrow Button */
+.borrow-btn {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: #fff;
+}
+
+.borrow-btn:hover {
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(10, 61, 145, 0.25);
+}
+
+.borrow-btn.disabled {
+    background: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Back Button */
+.back-btn {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+}
+
+.back-btn:hover {
+    background: var(--primary);
+    color: var(--text-light);
+    transform: translateY(-4px);
+}
+
+/* -----------------------------------------------
+   ABSTRACT BLOCK (Optional)
+-------------------------------------------------- */
+.thesis-abstract {
+    background: #fff;
+    border: 1px solid #e4ebff;
+    border-radius: 14px;
+    padding: 30px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 45px;
+    box-shadow: inset 0 2px 6px rgba(10, 61, 145, 0.06);
+    transition: background var(--transition);
+}
+
+.thesis-abstract:hover {
+    background: #f4f8ff;
+}
+
+.thesis-abstract h3 {
+    color: var(--primary);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+.thesis-abstract h3::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+/* ==========================================================
+   MODERN ICON BACK BUTTON — Clean, Professional
+========================================================== */
+
+.back-btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid rgba(10, 61, 145, 0.15);
+    color: var(--primary);
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.93rem;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(10, 61, 145, 0.08);
+    transition: var(--transition);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.back-btn-icon i {
+    font-size: 1rem;
+}
+
+.back-btn-icon:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(10, 61, 145, 0.2);
+}
+
+.back-btn-icon:active {
+    transform: translateY(0px);
+    box-shadow: 0 3px 10px rgba(10, 61, 145, 0.12);
+}
+
+/* -----------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------------------
+   RESPONSIVE — Modern, Clean
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .thesis-details-container {
+        padding: 35px 25px;
+        margin: 120px 15px 60px;
+    }
+
+    .details-title {
+        font-size: 1.65rem;
+        margin-bottom: 30px;
+    }
+
+    .meta-box {
+        padding: 18px 20px;
+    }
+
+    .borrow-btn,
+    .back-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==========================================================
+   CEIT THESIS HUB — REQUEST FORM (Modern Professional UI)
+   Cleaned + Optimized
+========================================================== */
+
+/* -----------------------------------------------
+   MAIN CONTAINER
+-------------------------------------------------- */
+.request-container {
+    max-width: 800px;
+    margin: 110px auto 90px;
+    padding: 45px 55px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    animation: fadeUp 0.5s ease;
+}
+
+/* -----------------------------------------------
+   TITLE
+-------------------------------------------------- */
+.request-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    letter-spacing: 0.5px;
+}
+
+/* -----------------------------------------------
+   THESIS INFORMATION BOX
+-------------------------------------------------- */
+.thesis-info-box {
+    background: linear-gradient(145deg, #f9fbff, #f1f5fb);
+    border: 1px solid #d9e3f3;
+    border-left: 6px solid var(--primary);
+    border-radius: 12px;
+    padding: 25px 30px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 14px rgba(10, 61, 145, 0.1);
+    transition: var(--transition);
+}
+
+.thesis-info-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(10, 61, 145, 0.15);
+}
+
+.thesis-info-box h3 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+}
+
+.thesis-info-box p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+}
+.thesis-info-box strong {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+.thesis-info-box span {
+    color: #111;
+    font-weight: 500;
+}
+
+/* -----------------------------------------------
+   FORM FIELDS
+-------------------------------------------------- */
+.request-form-box label {
+    display: block;
+    margin-top: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+.request-form-box input[type="text"] {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #cfd6e4;
+    border-radius: 8px;
+    margin-top: 6px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.request-form-box input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 6px rgba(10, 61, 145, 0.25);
+    outline: none;
+}
+
+/* HTML5 invalid highlight */
+input:invalid {
+    border-color: #d32f2f !important;
+}
+
+/* -----------------------------------------------
+   AGREEMENT CHECKBOX — Professional UI Card
+-------------------------------------------------- */
+.agreement {
+    margin-top: 35px;
+    padding: 20px 25px;
+    background: #f8fafc;
+    border: 1px solid #dce3f2;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(10, 61, 145, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.agreement:hover {
+    background: #f1f5fb;
+    box-shadow: 0 5px 18px rgba(10, 61, 145, 0.12);
+}
+
+/* Custom checkbox */
+.agreement input[type="checkbox"] {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--primary);
+    border-radius: 6px;
+    cursor: pointer;
+    background: #fff;
+    transition: var(--transition);
+    position: relative;
+}
+
+.agreement input[type="checkbox"]:checked {
+    background: var(--primary);
+    box-shadow: 0 0 8px rgba(10, 61, 145, 0.35);
+}
+
+.agreement input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: absolute;
+    top: -3px;
+    left: 4px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Agreement text */
+.agreement label {
+    user-select: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+    cursor: pointer;
+    justify-content: center;
+    margin: 0%;
+}
+
+/* -----------------------------------------------
+   BUTTON GROUP
+-------------------------------------------------- */
+.form-buttons {
+    display: flex;
+    gap: 18px;
+    margin-top: 35px;
+    justify-content: center;
+}
+
+.btn-submit {
+    width: 40%;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 4px 16px rgba(10, 61, 145, 0.25);
+    transition: var(--transition);
+}
+
+.btn-submit:hover:not(.disabled-btn) {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(10, 61, 145, 0.35);
+}
+
+.btn-submit.disabled-btn {
+    background: #cbd5e1;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-cancel {
+    width: 40%;
+    text-align: center;
+    padding: 12px 25px;
+    background: #e2e8f0;
+    color: var(--primary);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-cancel:hover {
+    background: #cbd5e1;
+    color: var(--secondary);
+}
+
+/* -----------------------------------------------
+   DIVIDER
+-------------------------------------------------- */
+.request-form-box hr {
+    border: none;
+    border-top: 1px solid #e0e7ff;
+    margin: 25px 0;
+}
+
+/* -----------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -----------------------------------------------
+   DARK MODE SUPPORT
+-------------------------------------------------- */
+body.dark-mode .request-container {
+    background: #1e1e26;
+    color: #f1f1f1;
+}
+
+body.dark-mode .thesis-info-box {
+    background: #2a2a36;
+    border-color: #444;
+}
+
+body.dark-mode .request-form-box input[type="text"] {
+    background: #2c2c36;
+    border-color: #555;
+    color: #fff;
+}
+
+body.dark-mode .btn-submit {
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
+    color: #111;
+}
+
+body.dark-mode .btn-cancel {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+/* =======================================================
+   ✅ REQUEST CONFIRMATION PAGE — CEIT Thesis Hub
+   ======================================================= */
+
+/* Confirmation Box */
+.confirmation-box {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(10, 61, 145, 0.12);
+    padding: 50px 60px;
+    max-width: 700px;
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeInScale 0.6s ease forwards;
+    .back-btn-icon {
+        width: 15%;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+    }
+}
+
+/* Success Icon */
+.success-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.success-icon svg {
+    width: 100px;
+    height: 100px;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawCircle 1s ease forwards, drawCheck 1.4s ease forwards;
+}
+
+/* Title */
+.confirmation-box h2 {
+    color: #2e7d32;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Request Number */
+.request-number {
+    font-size: 1.05rem;
+    color: var(--primary, #0a3d91);
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+/* Preview Info */
+.preview-info {
+    text-align: left;
+    background: linear-gradient(145deg, #f9fbff 0%, #f1f5fb 100%);
+    border: 1.5px solid #dce3f2;
+    border-radius: 14px;
+    padding: 30px 35px;
+    margin-bottom: 35px;
+    box-shadow: 0 6px 20px rgba(10, 61, 145, 0.08);
+    animation: fadeUp 0.5s ease forwards;
+}
+
+/* Section Headers */
+.preview-info h4 {
+    color: var(--primary, #0a3d91);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--primary, #0a3d91);
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+}
+
+/* Label and Value (Stacked) */
+.preview-info .label {
+    font-weight: 600;
+    color: var(--primary, #0a3d91);
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+.preview-info .value {
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    box-shadow: inset 0 1px 4px rgba(10, 61, 145, 0.05);
+}
+
+/* Divider */
+.preview-info hr {
+    border: none;
+    border-top: 1.5px solid #dce3f2;
+    margin: 25px 0;
+}
+
+/* OK Button */
+.ok-btn {
+    display: inline-block;
+    background: linear-gradient(
+        135deg,
+        var(--primary, #0a3d91),
+        var(--secondary, #1765d1)
+    );
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 12px 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(10, 61, 145, 0.25);
+}
+
+.ok-btn:hover {
+    background: linear-gradient(
+        135deg,
+        var(--secondary, #1765d1),
+        var(--primary, #0a3d91)
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(23, 101, 209, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCircle {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawCheck {
+    50% {
+        stroke-dashoffset: 150;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =======================================================
+   DARK MODE
+   ======================================================= */
+body.dark-mode .confirmation-box {
+    background: #1f1f28;
+    color: #f1f1f1;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .preview-info {
+    background: #2a2a36;
+    border-color: #444;
+    box-shadow: none;
+}
+
+body.dark-mode .preview-info h4,
+body.dark-mode .label {
+    color: #64b5f6;
+}
+
+body.dark-mode .preview-info .value {
+    background: #1f1f28;
+    border: 1.5px solid #555;
+    color: #f1f1f1;
+}
+
+body.dark-mode .ok-btn {
+    background: #64b5f6;
+    color: #111;
+}
+
+/* =======================================================
+   PRINT VERSION (Clean Receipt Layout)
+   ======================================================= */
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .success-icon,
+    .ok-btn {
+        display: none !important;
+    }
+
+    .confirmation-box {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        padding: 40px !important;
+        width: 95% !important;
+        margin: 0 auto !important;
+        text-align: left !important;
+    }
+
+    .confirmation-box h2,
+    .request-number {
+        color: #000 !important;
+        text-align: left !important;
+    }
+
+    .preview-info {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        background: none !important;
+    }
+
+    .preview-info h4 {
+        color: #000 !important;
+        border-bottom: 1px solid #000 !important;
+    }
+
+    .label,
+    .value {
+        color: #000 !important;
+        border-color: #000 !important;
+    }
+
+    @page {
+        margin: 1in;
+    }
+}
+
+/* =======================================================
+   RESPONSIVE DESIGN
+   ======================================================= */
+@media (max-width: 768px) {
+    .confirmation-box {
+        padding: 35px 25px;
+    }
+
+    .preview-info {
+        padding: 25px 20px;
+    }
+
+    .ok-btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.download-btn {
+    padding: 10px 25px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(10, 61, 145, 0.15);
+}
+
+.download-btn.pdf {
+    background: linear-gradient(
+        135deg,
+        var(--primary, #0a3d91),
+        var(--secondary, #1765d1)
+    );
+    color: #fff;
+}
+
+.download-btn.pdf:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(
+        135deg,
+        var(--secondary, #1765d1),
+        var(--primary, #0a3d91)
+    );
+}
+
+.download-btn.jpg {
+    background: #e2e8f0;
+    color: var(--primary, #0a3d91);
+}
+
+.download-btn.jpg:hover {
+    background: #dce3f2;
+    transform: translateY(-2px);
+}
