@@ -122,7 +122,7 @@ $borrowed = $conn->query("SELECT COUNT(*) AS total FROM tbl_borrow_requests WHER
         <main>
             <!-- Welcome Section -->
             <section class="welcome-section">
-                <h2>Welcome! Admin</h2>
+                <h2 class="labelOnLeft">Welcome! Admin</h2>
                 <p class="date"><?= strtoupper(date('M d, Y | l, h:i A')) ?></p>
                 <hr class="divider" />
             </section>

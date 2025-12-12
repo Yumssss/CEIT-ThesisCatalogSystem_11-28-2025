@@ -99,17 +99,18 @@
                 3rd Floor, CEIT Building, Main PLV Campus, Tongco St.,
                 Maysan, Valenzuela City
             </p>
-            <p>
+            <!-- <p>
                 <img
                     src="User Side/user-pictures/email.png"
                     class="footer-info-logo" />
                 loremipsum@plv.edu.ph
-            </p>
+            </p> -->
             <p>
                 <img
                     src="User Side/user-pictures/world-wide-web.png"
                     class="footer-info-logo" />
-                plv.edu.ph
+                <a href="https://plv.edu.ph/" target="_blank">
+                    plv.edu.ph</a>
             </p>
         </div>
         <div class="copyright">Copyright © 2025</div>

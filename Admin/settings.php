@@ -18,7 +18,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Settings | CEIT Thesis Hub</title>
+    <title>Settings</title>
     <link rel="icon" type="image/png" href="pictures/Logo.png">
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -131,9 +131,9 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
     <div class="container">
         <?php include 'sidebar.php'; ?>
 
-        <main class="settings-page">
-            <section class="welcome-section">
-                <h2>Welcome, <?php echo htmlspecialchars($displayName); ?>!</h2>
+        <main>
+            <section class="welcome-section-settings">
+                <h2 class="labelOnLeft">Settings</h2>
                 <p class="date"><?php echo strtoupper(date('M d, Y | l, h:i A')); ?></p>
                 <hr class="divider" />
             </section>

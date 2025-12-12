@@ -32,23 +32,8 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
             padding: 0;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table th,
-        table td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-        }
-
-        table th {
-            background: #2f3640;
-            color: #fff;
-            text-transform: uppercase;
+        .request-table {
+            border-radius: 12px;
         }
 
         tr:hover {
@@ -67,7 +52,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
         }
 
         .view {
-            background-color: #3498db;
+            background-color: darkblue;
         }
 
         .view:hover {
@@ -139,7 +124,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
 
         <main>
             <section class="welcome-section">
-                <h2>Librarian Accounts</h2>
+                <h2 class="labelOnLeft">Librarian Accounts</h2>
                 <p class="date"><?php echo strtoupper(date('M d, Y | l, h:i A')); ?></p>
                 <hr class="divider" />
             </section>
@@ -162,7 +147,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
             </div>
 
             <!-- 📋 Librarians Table -->
-            <section>
+            <section class="request-table">
                 <div class="bulk-actions" style="margin-bottom:10px;">
                     <div class="bulk-left">
                         <label><input type="checkbox" id="selectAllLibrarians"> <span style="margin-left:6px">Select All</span></label>
