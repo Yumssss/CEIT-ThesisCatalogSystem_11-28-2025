@@ -246,7 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!tbody) return;
 
         const idx = getHeaderIndexes();
-        Array.from(tbody.rows).forEach((row) => {
+        let rows = Array.from(tbody.rows);
+        // Filter first
+        let filtered = rows.filter((row) => {
             const cols = Array.from(row.querySelectorAll("td"));
             const titleCell = cols[idx.title] || cols[0];
             const authorCell = cols[idx.author] || cols[1];
@@ -262,8 +264,35 @@ document.addEventListener("DOMContentLoaded", () => {
             const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(department);
             const matchesAvail = selectedAvails.length === 0 || selectedAvails.includes(availability);
 
-            row.style.display = matchesQuery && matchesDept && matchesAvail ? "" : "none";
+            return matchesQuery && matchesDept && matchesAvail;
         });
+
+        // Sorting: check if there's a thesis-specific sort select
+        const thesisSort = document.getElementById('sortByThesis');
+        if (thesisSort) {
+            const val = thesisSort.value;
+            if (val === 'department_asc' || val === 'department_desc') {
+                filtered.sort((a, b) => {
+                    const aCol = a.querySelectorAll('td')[idx.department] || a.querySelectorAll('td')[3];
+                    const bCol = b.querySelectorAll('td')[idx.department] || b.querySelectorAll('td')[3];
+                    const aVal = (aCol?.textContent || '').trim();
+                    const bVal = (bCol?.textContent || '').trim();
+                    return val === 'department_asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                });
+            } else if (val === 'availability_asc' || val === 'availability_desc') {
+                filtered.sort((a, b) => {
+                    const aCol = a.querySelectorAll('td')[idx.availability] || a.querySelectorAll('td')[4];
+                    const bCol = b.querySelectorAll('td')[idx.availability] || b.querySelectorAll('td')[4];
+                    const aVal = (aCol?.textContent || '').trim();
+                    const bVal = (bCol?.textContent || '').trim();
+                    return val === 'availability_asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+                });
+            }
+        }
+
+        // Render
+        tbody.innerHTML = '';
+        filtered.forEach(r => tbody.appendChild(r));
     }
 
     // wire up events: search input + selects or checkboxes

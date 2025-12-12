@@ -75,6 +75,19 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
                                     <label><input type="checkbox" name="filter-availability" class="filter-availability" value="Available"> Available</label>
                                     <label><input type="checkbox" name="filter-availability" class="filter-availability" value="Unavailable"> Unavailable</label>
                                 </div>
+
+                                <hr>
+
+                                <div class="filter-group">
+                                    <p class="filter-label">Sort By</p>
+                                    <select id="sortByThesis">
+                                        <option value="">-- None --</option>
+                                        <option value="department_asc">Department (A → Z)</option>
+                                        <option value="department_desc">Department (Z → A)</option>
+                                        <option value="availability_asc">Availability (A → Z)</option>
+                                        <option value="availability_desc">Availability (Z → A)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
