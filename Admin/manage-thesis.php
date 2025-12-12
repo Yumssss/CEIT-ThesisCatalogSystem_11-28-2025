@@ -47,8 +47,8 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
         <main>
             <!-- MANAGE THESIS CONTENT -->
             <div id="thesisContainer">
-                <h2 class="section-title">Manage Thesis</h2>
-
+                <h2 class="labelOnLeft">Manage Thesis</h2>
+                <br>
                 <div class="add-thesis-center">
                     <button id="addThesisBtn" class="add-btn-header">📄 Add New Thesis</button>
                 </div>
@@ -88,58 +88,59 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
                     </div>
                 </div>
 
-                <!-- Thesis Table -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 40%;">Title</th>
-                            <th style="width: 25%;">Author(s)</th>
-                            <th style="width: 10%;">Year</th>
-                            <th style="width: 10%;">Department</th>
-                            <th style="width: 15%;">Availability</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM tbl_thesis ORDER BY year DESC";
-                        $result = $conn->query($query);
+                <section class="request-table">
+                    <!-- Thesis Table -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Title</th>
+                                <th style="width: 25%;">Author(s)</th>
+                                <th style="width: 10%;">Year</th>
+                                <th style="width: 10%;">Department</th>
+                                <th style="width: 15%;">Availability</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT * FROM tbl_thesis ORDER BY year DESC";
+                            $result = $conn->query($query);
 
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $jsonData = json_encode($row, JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG);
-                        ?>
-                                <tr data-id="<?= htmlspecialchars($row['thesis_id']) ?>">
-                                    <td><?= htmlspecialchars($row['title']) ?></td>
-                                    <td><?= htmlspecialchars($row['author']) ?></td>
-                                    <td><?= htmlspecialchars($row['year']) ?></td>
-                                    <td><?= htmlspecialchars($row['department']) ?></td>
-                                    <td style="text-align: center;">
-                                        <?php
-                                        $avail = strtolower($row['availability']);
-                                        $class = $avail === "available" ? "avail-available" : "avail-unavailable";
-                                        ?>
-                                        <span class="availability-badge <?= $class ?>">
-                                            <?= htmlspecialchars($row['availability']) ?>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <button class="action-btn edit-btn" onclick='openEditModal(<?= $jsonData ?>)'>
-                                            Edit
-                                        </button>
-                                    </td>
-                                </tr>
-                        <?php
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $jsonData = json_encode($row, JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_HEX_TAG);
+                            ?>
+                                    <tr data-id="<?= htmlspecialchars($row['thesis_id']) ?>">
+                                        <td><?= htmlspecialchars($row['title']) ?></td>
+                                        <td><?= htmlspecialchars($row['author']) ?></td>
+                                        <td><?= htmlspecialchars($row['year']) ?></td>
+                                        <td><?= htmlspecialchars($row['department']) ?></td>
+                                        <td style="text-align: center;">
+                                            <?php
+                                            $avail = strtolower($row['availability']);
+                                            $class = $avail === "available" ? "avail-available" : "avail-unavailable";
+                                            ?>
+                                            <span class="availability-badge <?= $class ?>">
+                                                <?= htmlspecialchars($row['availability']) ?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <button class="action-btn edit-btn" onclick='openEditModal(<?= $jsonData ?>)'>
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                            <?php
+                                }
+                            } else {
+                                echo "<tr><td colspan='6'>No thesis records found.</td></tr>";
                             }
-                        } else {
-                            echo "<tr><td colspan='6'>No thesis records found.</td></tr>";
-                        }
-                        $conn->close();
-                        ?>
-                    </tbody>
-                </table>
+                            $conn->close();
+                            ?>
+                        </tbody>
+                    </table>
             </div>
-
+            </section>
             <!-- ADD THESIS PAGE (Hidden by default) -->
             <section id="addThesisPage" class="add-thesis-page hidden fade-out">
                 <div class="add-header">

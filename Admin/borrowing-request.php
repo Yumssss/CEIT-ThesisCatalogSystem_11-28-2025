@@ -45,7 +45,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
 
         <main>
             <section class="request-header">
-                <h2>Borrowing Requests</h2>
+                <h2 class="labelOnLeft">Borrowing Requests</h2>
             </section>
 
             <section class="request-controls">

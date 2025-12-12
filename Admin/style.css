@@ -630,11 +630,6 @@ input:focus {
     gap: 15px;
 }
 
-.header-right h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
 .header-logo img {
     display: block;
     object-fit: contain;
@@ -655,15 +650,11 @@ main {
 }
 
 /* === WELCOME SECTION === */
-.welcome-section {
+.welcome-section-settings {
     margin-bottom: 30px;
     text-align: left;
 }
-.welcome-section h2 {
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 1.5rem;
-}
+
 .welcome-section .date {
     color: #666;
     font-size: 0.9rem;
@@ -894,7 +885,7 @@ main {
     text-align: left;
 }
 
-.request-header h2 {
+.labelOnLeft {
     font-size: 1.8rem;
     font-weight: 600;
     color: #0a3d91;
@@ -1547,75 +1538,116 @@ main {
     opacity: 0.5;
     cursor: not-allowed;
 }
-
-/* Table */
+/* ==============================
+   Manage Thesis — Request-style Table
+   Paste at end of stylesheet
+   ============================== */
+/* Remove column gap completely */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e3e8f5;
+    border-spacing: 0 !important;
 }
 
-th,
-td {
-    padding: 12px 10px;
-    text-align: left;
-    font-size: 0.93rem;
-    border-bottom: 1px solid #f1f3f8;
+/* Data cells — match recent-requests spacing & tone */
+main table td,
+.thesis-overview table td {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.28s ease;
+    color: #1a1a1a;
+    vertical-align: middle;
 }
 
-th {
-    background: #0a3d91;
-    color: white;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-align: center;
-}
-
-tr:hover td {
+/* Hover row effect */
+main table tr:hover td,
+.thesis-overview table tr:hover td {
     background: #f9fbff;
 }
 
-/* Buttons inside table */
-.action-btn {
-    border: none;
-    padding: 7px 13px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: white;
-    cursor: pointer;
-    transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.edit-btn {
+/* Header styling (keeps your blue header but tighter padding) */
+main table th,
+.thesis-overview table th {
+    padding: 12px 18px;
     background: #0a3d91;
-}
-
-.edit-btn:hover {
-    background: #153fa3;
-    transform: translateY(-1px);
-}
-.availability-badge {
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 13px;
+    color: #fff;
     font-weight: 600;
-    display: inline-block;
     text-align: center;
-    min-width: 90px;
-    color: white;
+    letter-spacing: 0.3px;
 }
 
-/* Slight transparency look */
+/* Center the Year (3), Department (4), Availability (5) columns */
+main table td:nth-child(3),
+main table td:nth-child(4),
+main table td:nth-child(5),
+main table th:nth-child(3),
+main table th:nth-child(4),
+main table th:nth-child(5),
+.thesis-overview table td:nth-child(3),
+.thesis-overview table td:nth-child(4),
+.thesis-overview table td:nth-child(5),
+.thesis-overview table th:nth-child(3),
+.thesis-overview table th:nth-child(4),
+.thesis-overview table th:nth-child(5) {
+    text-align: center;
+}
+
+/* Title truncation — targets first cell so no HTML change needed */
+/* main table td:first-child,
+.thesis-overview table td:first-child {
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+} */
+
+/* If you want a tooltip on hover using title attribute (optional):
+   ensure your PHP prints <td title="<?= htmlspecialchars($row['title']) ?>"> for the title cell.
+   But truncation will work without changing markup. */
+
+/* Soft pill style for availability (status-badge look) */
+.availability-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    min-width: 88px;
+    text-align: center;
+    transition: background 0.2s ease, color 0.2s ease;
+    box-shadow: none;
+}
+
+/* Soft background variants (text colored, subtle bg) */
 .avail-available {
-    background: rgba(40, 167, 69, 0.75); /* green */
+    background: rgba(40, 167, 69, 0.12); /* soft green bg */
+    color: #2e7d32; /* dark green text */
+    border: 1px solid rgba(40, 167, 69, 0.12);
 }
 
 .avail-unavailable {
-    background: rgba(220, 53, 69, 0.75); /* red */
+    background: rgba(220, 53, 69, 0.12); /* soft red bg */
+    color: #b91c1c; /* dark red text */
+    border: 1px solid rgba(220, 53, 69, 0.12);
+}
+
+/* Keep a compact action cell and button style */
+main table td:last-child,
+.thesis-overview table td:last-child {
+    text-align: center;
+    width: 120px;
+}
+
+/* Button style (borrowing request look) */
+.action-btn {
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: #0a3d91;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 /* 🍏 iOS Toast Container — Bottom Left */
@@ -1849,7 +1881,6 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 200;
-    backdrop-filter: blur(4px);
     animation: fadeInModal 0.3s ease;
 }
 
