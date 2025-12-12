@@ -231,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (deptFilterSelect.value) selectedDepts = [deptFilterSelect.value];
         } else if (deptCheckboxes && deptCheckboxes.length) {
             selectedDepts = Array.from(deptCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+            selectedDepts = selectedDepts.map(s => s.toLowerCase().trim());
         }
 
         // collect selected availability(s)
@@ -239,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (availFilterSelect.value) selectedAvails = [availFilterSelect.value];
         } else if (availCheckboxes && availCheckboxes.length) {
             selectedAvails = Array.from(availCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+            selectedAvails = selectedAvails.map(s => s.toLowerCase().trim());
         }
 
         // table rows
@@ -261,8 +263,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const availability = (availCell?.textContent || "").trim();
 
             const matchesQuery = q === "" || title.includes(q) || author.includes(q);
-            const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(department);
-            const matchesAvail = selectedAvails.length === 0 || selectedAvails.includes(availability);
+            const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(department.toLowerCase());
+            const matchesAvail = selectedAvails.length === 0 || selectedAvails.includes(availability.toLowerCase());
 
             return matchesQuery && matchesDept && matchesAvail;
         });

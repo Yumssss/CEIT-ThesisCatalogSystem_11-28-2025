@@ -370,22 +370,35 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
                 renderFiltered();
             }
 
+            function getHeaderIndexes() {
+                const ths = Array.from(document.querySelectorAll('main table thead tr th')).map(th => th.textContent.trim().toLowerCase());
+                return {
+                    select: ths.findIndex(t => t.includes('select')),
+                    title: ths.findIndex(t => t.includes('title')),
+                    author: ths.findIndex(t => t.includes('author')),
+                    year: ths.findIndex(t => t.includes('year')),
+                    department: ths.findIndex(t => t.includes('department')),
+                    availability: ths.findIndex(t => t.includes('availability')),
+                };
+            }
+
             function renderFiltered() {
                 const searchTerm = (searchInput?.value || "").toLowerCase().trim();
-                const selectedDepts = getSelectedValues(filterDept);
-                const selectedAvail = getSelectedValues(filterAvail);
+                const selectedDepts = getSelectedValues(filterDept).map(s => s.toLowerCase().trim());
+                const selectedAvail = getSelectedValues(filterAvail).map(s => s.toLowerCase().trim());
 
+                const idx = getHeaderIndexes();
                 const filtered = allRows.filter(row => {
                     const cells = row.querySelectorAll("td");
                     if (!cells || cells.length === 0) return false;
-                    const title = (cells[0].textContent || "").toLowerCase();
-                    const author = (cells[1].textContent || "").toLowerCase();
-                    const dept = (cells[3].textContent || "").trim();
-                    const availability = (cells[4].textContent || "").trim();
+                    const title = (cells[idx.title]?.textContent || cells[1]?.textContent || "").toLowerCase();
+                    const author = (cells[idx.author]?.textContent || cells[2]?.textContent || "").toLowerCase();
+                    const dept = (cells[idx.department]?.textContent || cells[4]?.textContent || "").trim();
+                    const availability = (cells[idx.availability]?.textContent || cells[5]?.textContent || "").trim();
 
                     const matchesSearch = !searchTerm || title.includes(searchTerm) || author.includes(searchTerm);
-                    const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(dept);
-                    const matchesAvail = selectedAvail.length === 0 || selectedAvail.includes(availability);
+                    const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(dept.toLowerCase());
+                    const matchesAvail = selectedAvail.length === 0 || selectedAvail.includes(availability.toLowerCase());
                     return matchesSearch && matchesDept && matchesAvail;
                 });
 
@@ -405,7 +418,7 @@ $displayName = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : $_SESSION[
                 if (pageRows.length === 0) {
                     const tr = document.createElement("tr");
                     const td = document.createElement("td");
-                    td.colSpan = 6;
+                    td.colSpan = 7;
                     td.style.textAlign = "center";
                     td.style.color = "gray";
                     td.textContent = "No thesis records found.";
