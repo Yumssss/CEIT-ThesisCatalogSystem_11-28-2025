@@ -206,46 +206,85 @@ document.addEventListener("DOMContentLoaded", () => {
     // 5) SEARCH + FILTER (client-side)
     // ----------------------------
     const searchInput = $("#searchInput");
-    const deptFilter = $("#filterDepartment");
-    const availFilter = $("#filterAvailability");
+    const deptFilterSelect = $("#filterDepartment");
+    const availFilterSelect = $("#filterAvailability");
+    const deptCheckboxes = document.querySelectorAll(".filter-dept");
+    const availCheckboxes = document.querySelectorAll(".filter-availability");
+
+    function getHeaderIndexes() {
+        const ths = Array.from(document.querySelectorAll("table thead tr th")).map(th => th.textContent.trim().toLowerCase());
+        return {
+            title: ths.findIndex(t => t.includes("title")),
+            author: ths.findIndex(t => t.includes("author")),
+            department: ths.findIndex(t => t.includes("department")),
+            availability: ths.findIndex(t => t.includes("availability")),
+        };
+    }
 
     function filterTable() {
-        if (!searchInput && !deptFilter && !availFilter) return;
+        if (!searchInput && !deptFilterSelect && !deptCheckboxes.length && !availFilterSelect && !availCheckboxes.length) return;
         const q = (searchInput?.value || "").trim().toLowerCase();
-        const dept = deptFilter?.value || "";
-        const avail = availFilter?.value || "";
+
+        // collect selected department(s)
+        let selectedDepts = [];
+        if (deptFilterSelect) {
+            if (deptFilterSelect.value) selectedDepts = [deptFilterSelect.value];
+        } else if (deptCheckboxes && deptCheckboxes.length) {
+            selectedDepts = Array.from(deptCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+        }
+
+        // collect selected availability(s)
+        let selectedAvails = [];
+        if (availFilterSelect) {
+            if (availFilterSelect.value) selectedAvails = [availFilterSelect.value];
+        } else if (availCheckboxes && availCheckboxes.length) {
+            selectedAvails = Array.from(availCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+        }
 
         // table rows
         const tbody = document.querySelector("tbody");
         if (!tbody) return;
+
+        const idx = getHeaderIndexes();
         Array.from(tbody.rows).forEach((row) => {
-            // cells may shift if bulk checkbox added. Prefer selecting cells by header mapping:
-            // Title is first td after any inserted checkbox cell. We'll use data attributes if present.
-            const titleCell = row.querySelector("td:nth-child(1)");
-            const authorCell = row.querySelector("td:nth-child(2)");
-            const deptCell = row.querySelector("td:nth-child(4)");
-            const availCell = row.querySelector("td:nth-child(5)");
+            const cols = Array.from(row.querySelectorAll("td"));
+            const titleCell = cols[idx.title] || cols[0];
+            const authorCell = cols[idx.author] || cols[1];
+            const deptCell = cols[idx.department] || cols[3] || null;
+            const availCell = cols[idx.availability] || cols[4] || null;
 
             const title = (titleCell?.textContent || "").toLowerCase();
             const author = (authorCell?.textContent || "").toLowerCase();
             const department = (deptCell?.textContent || "").trim();
             const availability = (availCell?.textContent || "").trim();
 
-            const matchesQuery =
-                q === "" || title.includes(q) || author.includes(q);
-            const matchesDept = dept === "" || department === dept;
-            const matchesAvail = avail === "" || availability === avail;
+            const matchesQuery = q === "" || title.includes(q) || author.includes(q);
+            const matchesDept = selectedDepts.length === 0 || selectedDepts.includes(department);
+            const matchesAvail = selectedAvails.length === 0 || selectedAvails.includes(availability);
 
-            row.style.display =
-                matchesQuery && matchesDept && matchesAvail ? "" : "none";
+            row.style.display = matchesQuery && matchesDept && matchesAvail ? "" : "none";
         });
     }
 
-    [searchInput, deptFilter, availFilter].forEach((el) => {
-        if (!el) return;
-        el.addEventListener("input", filterTable);
-        el.addEventListener("change", filterTable);
-    });
+    // wire up events: search input + selects or checkboxes
+    if (searchInput) {
+        searchInput.addEventListener("input", filterTable);
+        searchInput.addEventListener("change", filterTable);
+    }
+    if (deptFilterSelect) {
+        deptFilterSelect.addEventListener("input", filterTable);
+        deptFilterSelect.addEventListener("change", filterTable);
+    }
+    if (availFilterSelect) {
+        availFilterSelect.addEventListener("input", filterTable);
+        availFilterSelect.addEventListener("change", filterTable);
+    }
+    if (deptCheckboxes && deptCheckboxes.length) {
+        deptCheckboxes.forEach(cb => cb.addEventListener('change', filterTable));
+    }
+    if (availCheckboxes && availCheckboxes.length) {
+        availCheckboxes.forEach(cb => cb.addEventListener('change', filterTable));
+    }
 
     // ----------------------------
     // 6) BULK MODE TOGGLE + BULK ACTIONS (real DB operations)
