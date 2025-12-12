@@ -1817,3 +1817,8 @@ body.dark-mode .ok-btn {
     background: #dce3f2;
     transform: translateY(-2px);
 }
+
+p a {
+    color: white;
+    text-decoration: none;
+}
